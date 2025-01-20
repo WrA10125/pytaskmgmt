@@ -1,5 +1,4 @@
 from datetime import datetime
-
 def task_serializer(task):
     return {
         "_id": str(task["_id"]),
