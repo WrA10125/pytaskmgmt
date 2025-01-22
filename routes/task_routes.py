@@ -5,7 +5,7 @@ from database import mongo
 
 task_bp = Blueprint("task_routes", __name__)
 
-@task_bp.route("/", methods=["POST"], strict_slashes=False)
+@task_bp.route("/", methods=["POST"])
 def create_task():
     data = request.json
 
@@ -32,7 +32,7 @@ def create_task():
         return jsonify({"error": str(e)}), 500
 
 
-@task_bp.route("/", methods=["GET"], strict_slashes=False)
+@task_bp.route("/", methods=["GET"])
 def get_tasks():
     try:
         tasks = mongo.db.tasks.find({})
@@ -44,7 +44,7 @@ def get_tasks():
         return jsonify({"error": f"Error fetching tasks: {str(e)}"}), 500
 
 
-@task_bp.route("/<task_id>", methods=["PUT"], strict_slashes=False)
+@task_bp.route("/<task_id>", methods=["PUT"])
 def update_task(task_id):
     data = request.json
 
@@ -62,7 +62,7 @@ def update_task(task_id):
         return jsonify({"error": str(e)}), 500
 
 
-@task_bp.route("/<task_id>", methods=["DELETE"], strict_slashes=False)
+@task_bp.route("/<task_id>", methods=["DELETE"])
 def delete_task(task_id):
  
     if not ObjectId.is_valid(task_id):
