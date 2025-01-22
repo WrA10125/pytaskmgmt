@@ -54,4 +54,4 @@ app.register_blueprint(task_bp, url_prefix="/api/tasks")
 
 # Running the app
 port = int(os.environ.get('PORT', 10000)) 
-app.run(host='0.0.0.0', port=port, debug=True)  # Enabling debug for development
+app.run(host='0.0.0.0', port=port, debug=False)  # Enabling debug for development
