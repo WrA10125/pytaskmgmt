@@ -7,11 +7,10 @@ from routes.task_routes import task_bp
 app = Flask(__name__)
 
 
-CORS(app, origins=["https://angtaskmgmt.vercel.app", "http://localhost:4200"], methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"])
+CORS(app, origins=["https://angtaskmgmt.vercel.app", "http://localhost:4200","*"], methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"])
 
 @app.before_request
 def handle_preflight():
-    """Global handling of pre-flight OPTIONS requests"""
     if request.method == 'OPTIONS':
         response = jsonify({'message': 'CORS Pre-flight request'})
         response.headers.add('Access-Control-Allow-Origin', '*')
@@ -28,4 +27,4 @@ app.register_blueprint(task_bp, url_prefix="/api/tasks")
 
 
 port = int(os.environ.get('PORT', 10000)) 
-app.run(host='0.0.0.0', port=port, debug=False)  
+app.run(host='0.0.0.0', port=port, debug=False)

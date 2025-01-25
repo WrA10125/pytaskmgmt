@@ -116,7 +116,7 @@ def get_tasks():
         task_list = [task_serializer(task) for task in tasks]
         return jsonify(task_list), 200
     except Exception as e:
-        return jsonify({"error": f"Error fetching tasks: {str(e)}"}), 500
+        return jsonify({"error":"Error fetching tasks: {str(e)}"}), 500
 
 
 # Update an existing task
