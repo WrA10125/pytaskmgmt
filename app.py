@@ -7,7 +7,7 @@ from routes.task_routes import task_bp
 app = Flask(__name__)
 
 
-CORS(app, origins=["https://angtaskmgmt.vercel.app", "http://localhost:4200","*"], methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"])
+CORS(app, origins=["https://angtaskmgmt.vercel.app", "http://localhost:4200"], methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"])
 
 @app.before_request
 def handle_preflight():
