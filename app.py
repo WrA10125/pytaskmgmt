@@ -7,7 +7,7 @@ from routes.task_routes import task_bp
 app = Flask(__name__)
 
 
-CORS(app, origins=["https://angtaskmgmt.vercel.app", "http://localhost:4200"], methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"])
+CORS(app, origins=["https://angtaskmgmt.vercel.app", "http://localhost:4200" ,"*"], methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"])
 
 @app.before_request
 def handle_preflight():
@@ -18,7 +18,7 @@ def handle_preflight():
         response.headers.add('Access-Control-Allow-Headers', 'Content-Type, Authorization')
         return response
 
-
+CORS(task_bp)
 app.config["MONGO_URI"] = "mongodb+srv://ajaygore:Ajaygore%404046@aava.gb3aw.mongodb.net/techstack?retryWrites=true&w=majority"
 mongo.init_app(app)
 
